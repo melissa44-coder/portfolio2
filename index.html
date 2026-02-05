@@ -1,0 +1,2678 @@
+<!doctype html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Award-winning creative director and designer crafting memorable brand experiences"
+    />
+    <meta
+      name="keywords"
+      content="creative director, brand design, UX design, portfolio"
+    />
+    <title>Pumpkin_Coder🎃 — Creative Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/_sdk/element_sdk.js"></script>
+    <script src="/_sdk/data_sdk.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        box-sizing: border-box;
+      }
+
+      :root {
+        --color-bg: #0a0a0a;
+        --color-surface: #161616;
+        --color-text: #f5f5f5;
+        --color-primary: #c9a962;
+        --color-secondary: #8b8b8b;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: var(--color-bg);
+        color: var(--color-text);
+        line-height: 1.6;
+      }
+
+      .font-display {
+        font-family: "Playfair Display", serif;
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--color-bg);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--color-secondary);
+        border-radius: 4px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--color-primary);
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-60px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes scaleIn {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes shimmer {
+        0% {
+          background-position: -200% 0;
+        }
+        100% {
+          background-position: 200% 0;
+        }
+      }
+
+      .animate-fade-in-up {
+        animation: fadeInUp 0.8s ease-out forwards;
+      }
+
+      .animate-fade-in {
+        animation: fadeIn 0.6s ease-out forwards;
+      }
+
+      .animate-slide-in-left {
+        animation: slideInLeft 0.8s ease-out forwards;
+      }
+
+      .animate-scale-in {
+        animation: scaleIn 0.6s ease-out forwards;
+      }
+
+      .delay-100 {
+        animation-delay: 0.1s;
+      }
+      .delay-200 {
+        animation-delay: 0.2s;
+      }
+      .delay-300 {
+        animation-delay: 0.3s;
+      }
+      .delay-400 {
+        animation-delay: 0.4s;
+      }
+      .delay-500 {
+        animation-delay: 0.5s;
+      }
+      .delay-600 {
+        animation-delay: 0.6s;
+      }
+
+      /* Gradient text */
+      .gradient-text {
+        background: linear-gradient(
+          135deg,
+          var(--color-primary) 0%,
+          #e8d5a3 50%,
+          var(--color-primary) 100%
+        );
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      /* Hover effects */
+      .hover-lift {
+        transition:
+          transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.4s ease;
+      }
+
+      .hover-lift:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(201, 169, 98, 0.15);
+      }
+
+      /* Project card overlay */
+      .project-card {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .project-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          transparent 0%,
+          rgba(10, 10, 10, 0.9) 100%
+        );
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        z-index: 1;
+      }
+
+      .project-card:hover::before {
+        opacity: 1;
+      }
+
+      .project-card .project-info {
+        transform: translateY(20px);
+        opacity: 0;
+        transition: all 0.4s ease;
+      }
+
+      .project-card:hover .project-info {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      /* Button styles */
+      .btn-primary {
+        background: linear-gradient(
+          135deg,
+          var(--color-primary) 0%,
+          #b8944f 100%
+        );
+        color: var(--color-bg);
+        padding: 16px 32px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-primary::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.5s ease;
+      }
+
+      .btn-primary:hover::before {
+        left: 100%;
+      }
+
+      .btn-primary:hover {
+        transform: scale(1.02);
+        box-shadow: 0 10px 30px rgba(201, 169, 98, 0.3);
+      }
+
+      .btn-outline {
+        border: 1px solid var(--color-primary);
+        color: var(--color-primary);
+        padding: 14px 28px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .btn-outline:hover {
+        background: var(--color-primary);
+        color: var(--color-bg);
+      }
+
+      /* Navigation */
+      .nav-link {
+        position: relative;
+        color: var(--color-text);
+        transition: color 0.3s ease;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: var(--color-primary);
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover {
+        color: var(--color-primary);
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      /* Section divider */
+      .section-divider {
+        width: 60px;
+        height: 2px;
+        background: linear-gradient(90deg, var(--color-primary), transparent);
+      }
+
+      /* Form inputs */
+      .form-input {
+        background: var(--color-surface);
+        border: 1px solid transparent;
+        padding: 16px 20px;
+        color: var(--color-text);
+        transition: all 0.3s ease;
+        width: 100%;
+      }
+
+      .form-input:focus {
+        outline: none;
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 3px rgba(201, 169, 98, 0.1);
+      }
+
+      .form-input::placeholder {
+        color: var(--color-secondary);
+      }
+
+      /* Testimonial card */
+      .testimonial-card {
+        background: linear-gradient(
+          135deg,
+          var(--color-surface) 0%,
+          rgba(22, 22, 22, 0.8) 100%
+        );
+        border: 1px solid rgba(201, 169, 98, 0.1);
+      }
+
+      /* Modal */
+      .modal-backdrop {
+        background: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(10px);
+      }
+
+      /* Filter buttons */
+      .filter-btn {
+        color: var(--color-secondary);
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .filter-btn.active,
+      .filter-btn:hover {
+        color: var(--color-primary);
+      }
+
+      .filter-btn.active::after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 4px;
+        height: 4px;
+        background: var(--color-primary);
+        border-radius: 50%;
+      }
+
+      /* Stats counter */
+      .stat-number {
+        font-size: 3.5rem;
+        font-weight: 300;
+        line-height: 1;
+      }
+
+      /* Service card */
+      .service-card {
+        background: var(--color-surface);
+        border: 1px solid rgba(201, 169, 98, 0.1);
+        transition: all 0.4s ease;
+      }
+
+      .service-card:hover {
+        border-color: var(--color-primary);
+        background: linear-gradient(
+          135deg,
+          var(--color-surface) 0%,
+          rgba(201, 169, 98, 0.05) 100%
+        );
+      }
+
+      .service-card .service-icon {
+        transition: transform 0.4s ease;
+      }
+
+      .service-card:hover .service-icon {
+        transform: scale(1.1);
+      }
+
+      /* Blog card */
+      .blog-card {
+        transition: all 0.4s ease;
+      }
+
+      .blog-card:hover .blog-image {
+        transform: scale(1.05);
+      }
+
+      /* Mobile menu */
+      .mobile-menu {
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .mobile-menu.open {
+        transform: translateX(0);
+      }
+
+      /* Loading spinner */
+      .spinner {
+        width: 20px;
+        height: 20px;
+        border: 2px solid transparent;
+        border-top-color: currentColor;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Toast notification */
+      .toast {
+        transform: translateY(100px);
+        opacity: 0;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .toast.show {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      /* Parallax effect */
+      .parallax-slow {
+        will-change: transform;
+      }
+
+      /* Image placeholder gradient */
+      .img-placeholder {
+        background: linear-gradient(
+          135deg,
+          var(--color-surface) 0%,
+          rgba(201, 169, 98, 0.1) 100%
+        );
+      }
+
+      /* Cursor follower */
+      .cursor-dot {
+        width: 8px;
+        height: 8px;
+        background: var(--color-primary);
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 9999;
+        transition: transform 0.1s ease;
+        mix-blend-mode: difference;
+      }
+
+      /* Hide on touch devices */
+      @media (hover: none) {
+        .cursor-dot {
+          display: none;
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .stat-number {
+          font-size: 2.5rem;
+        }
+      }
+    </style>
+    <style>
+      @view-transition {
+        navigation: auto;
+      }
+    </style>
+  </head>
+  <body class="h-full">
+    <div id="app-wrapper" class="w-full h-full overflow-auto">
+      <!-- Custom Cursor -->
+      <div class="cursor-dot hidden lg:block" id="cursor"></div>
+      <!-- Navigation -->
+      <header
+        class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+        id="navbar"
+      >
+        <nav
+          class="max-w-7xl mx-auto px-6 lg:px-12 py-6 flex items-center justify-between"
+        >
+          <a
+            href="#home"
+            class="font-display text-2xl tracking-wide gradient-text"
+            id="site-name"
+            >Pumpkin_Coder🎃</a
+          >
+          <!-- Desktop Navigation -->
+          <div class="hidden lg:flex items-center gap-10">
+            <a href="#work" class="nav-link text-sm tracking-widest uppercase"
+              >Work</a
+            >
+            <a href="#about" class="nav-link text-sm tracking-widest uppercase"
+              >About</a
+            >
+            <a
+              href="#services"
+              class="nav-link text-sm tracking-widest uppercase"
+              >Services</a
+            >
+            <a href="#blog" class="nav-link text-sm tracking-widest uppercase"
+              >Insights</a
+            >
+            <a
+              href="#contact"
+              class="nav-link text-sm tracking-widest uppercase"
+              >Contact</a
+            >
+          </div>
+          <!-- Mobile Menu Button -->
+          <button
+            class="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5"
+            id="menu-btn"
+            aria-label="Toggle menu"
+          >
+            <span
+              class="w-6 h-0.5 bg-current transition-all duration-300"
+              id="menu-line-1"
+            ></span>
+            <span
+              class="w-6 h-0.5 bg-current transition-all duration-300"
+              id="menu-line-2"
+            ></span>
+            <span
+              class="w-4 h-0.5 bg-current transition-all duration-300 ml-auto"
+              id="menu-line-3"
+            ></span>
+          </button>
+        </nav>
+      </header>
+      <!-- Mobile Menu -->
+      <div
+        class="mobile-menu fixed inset-0 z-40 bg-black lg:hidden"
+        id="mobile-menu"
+      >
+        <div class="flex flex-col items-center justify-center h-full gap-8">
+          <a
+            href="#work"
+            class="font-display text-3xl"
+            onclick="closeMobileMenu()"
+            >Work</a
+          >
+          <a
+            href="#about"
+            class="font-display text-3xl"
+            onclick="closeMobileMenu()"
+            >About</a
+          >
+          <a
+            href="#services"
+            class="font-display text-3xl"
+            onclick="closeMobileMenu()"
+            >Services</a
+          >
+          <a
+            href="#blog"
+            class="font-display text-3xl"
+            onclick="closeMobileMenu()"
+            >Insights</a
+          >
+          <a
+            href="#contact"
+            class="font-display text-3xl"
+            onclick="closeMobileMenu()"
+            >Contact</a
+          >
+        </div>
+      </div>
+      <!-- Hero Section -->
+      <section
+        id="home"
+        class="min-h-screen flex items-center relative overflow-hidden"
+      >
+        <!-- Background Elements -->
+        <div class="absolute inset-0 overflow-hidden">
+          <div
+            class="absolute top-20 right-10 w-96 h-96 bg-gradient-to-br from-amber-900/20 to-transparent rounded-full blur-3xl"
+          ></div>
+          <div
+            class="absolute bottom-20 left-10 w-80 h-80 bg-gradient-to-tr from-amber-800/10 to-transparent rounded-full blur-3xl"
+          ></div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 py-32 relative z-10">
+          <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <p
+                class="text-sm tracking-widest uppercase text-amber-500 mb-6 animate-fade-in-up opacity-0"
+                style="--color-primary: #c9a962"
+              >
+                Creative Developer &amp; Brand Strategist
+              </p>
+              <h1
+                class="font-display text-5xl md:text-6xl lg:text-7xl leading-tight mb-8 animate-fade-in-up opacity-0 delay-100"
+                id="hero-title"
+              >
+                Crafting <span class="gradient-text">Memorable</span> Brand
+                Experiences
+              </h1>
+              <p
+                class="text-lg text-gray-400 mb-10 max-w-lg animate-fade-in-up opacity-0 delay-200"
+                id="hero-subtitle"
+              >
+                I help ambitious brands tell their story through strategic
+                design, creating lasting connections with their audience.
+              </p>
+              <div
+                class="flex flex-wrap gap-4 animate-fade-in-up opacity-0 delay-300"
+              >
+                <a href="#work" class="btn-primary rounded-full"
+                  >View My Work</a
+                >
+                <a href="#contact" class="btn-outline rounded-full"
+                  >Let's Talk</a
+                >
+              </div>
+            </div>
+            <!-- Hero Image -->
+            <img src="images/merry.jpg" />
+            <div class="relative animate-scale-in opacity-0 delay-400">
+              <div class="aspect-square max-w-md mx-auto relative">
+                <div
+                  class="absolute inset-0 bg-gradient-to-br from-amber-600/20 to-transparent rounded-3xl transform rotate-6"
+                ></div>
+                <div
+                  class="absolute inset-0 bg-gradient-to-tl from-amber-500/10 to-transparent rounded-3xl transform -rotate-3"
+                ></div>
+                <div
+                  class="relative img-placeholder rounded-3xl overflow-hidden aspect-square flex items-center justify-center"
+                >
+                  <svg
+                    class="w-48 h-48 text-amber-600/30"
+                    viewbox="0 0 100 100"
+                    fill="none"
+                  >
+                    <circle
+                      cx="50"
+                      cy="35"
+                      r="20"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    />
+                    <path
+                      d="M20 85 C20 60 80 60 80 85"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      fill="none"
+                    />
+                    <circle
+                      cx="50"
+                      cy="50"
+                      r="45"
+                      stroke="currentColor"
+                      stroke-width="1"
+                      stroke-dasharray="4 4"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <!-- Floating Stats -->
+              <div
+                class="absolute -bottom-4 -left-4 bg-surface p-6 rounded-2xl shadow-2xl animate-fade-in-up opacity-0 delay-500"
+                style="background: var(--color-surface)"
+              >
+                <p class="stat-number gradient-text font-display">12+</p>
+                <p class="text-sm text-gray-400">Years Experience</p>
+              </div>
+              <div
+                class="absolute -top-4 -right-4 bg-surface p-6 rounded-2xl shadow-2xl animate-fade-in-up opacity-0 delay-600"
+                style="background: var(--color-surface)"
+              >
+                <p class="stat-number gradient-text font-display">150+</p>
+                <p class="text-sm text-gray-400">Projects Completed</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Scroll Indicator -->
+        <div
+          class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce"
+        >
+          <div
+            class="w-6 h-10 border-2 border-gray-600 rounded-full flex justify-center"
+          >
+            <div
+              class="w-1 h-3 bg-amber-500 rounded-full mt-2 animate-pulse"
+            ></div>
+          </div>
+        </div>
+      </section>
+      <!-- Work/Case Studies Section -->
+      <section id="work" class="py-32 relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+          <!-- Section Header -->
+          <div
+            class="flex flex-col md:flex-row md:items-end justify-between mb-16"
+          >
+            <div>
+              <p class="text-sm tracking-widest uppercase text-amber-500 mb-4">
+                Portfolio
+              </p>
+              <h2 class="font-display text-4xl md:text-5xl">Selected Work</h2>
+              <div class="section-divider mt-6"></div>
+            </div>
+            <!-- Filter Buttons -->
+            <div class="flex gap-8 mt-8 md:mt-0">
+              <button
+                class="filter-btn text-sm tracking-widest uppercase active"
+                data-filter="all"
+                onclick="filterProjects('all')"
+              >
+                All
+              </button>
+              <button
+                class="filter-btn text-sm tracking-widest uppercase"
+                data-filter="branding"
+                onclick="filterProjects('branding')"
+              >
+                Branding
+              </button>
+              <button
+                class="filter-btn text-sm tracking-widest uppercase"
+                data-filter="digital"
+                onclick="filterProjects('digital')"
+              >
+                Digital
+              </button>
+              <button
+                class="filter-btn text-sm tracking-widest uppercase"
+                data-filter="strategy"
+                onclick="filterProjects('strategy')"
+              >
+                Strategy
+              </button>
+            </div>
+          </div>
+          <!-- Projects Grid -->
+          <div class="grid md:grid-cols-2 gap-8" id="projects-grid">
+            <!-- Project 1 -->
+            <div
+              class="project-card rounded-2xl overflow-hidden cursor-pointer hover-lift"
+              data-category="branding"
+              onclick="openProjectModal(0)"
+            >
+              <div class="aspect-[4/3] img-placeholder relative">
+                <svg
+                  class="absolute inset-0 m-auto w-24 h-24 text-amber-600/40"
+                  viewbox="0 0 100 100"
+                  fill="none"
+                >
+                  <rect
+                    x="10"
+                    y="10"
+                    width="80"
+                    height="80"
+                    rx="8"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                  <circle
+                    cx="35"
+                    cy="35"
+                    r="10"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M10 70 L40 50 L60 65 L90 40"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                </svg>
+                <div
+                  class="project-info absolute inset-0 z-10 flex flex-col justify-end p-8"
+                >
+                  <span
+                    class="text-amber-500 text-sm tracking-widest uppercase mb-2"
+                    >Branding</span
+                  >
+                  <h3 class="font-display text-2xl mb-2">Lumina Cosmetics</h3>
+                  <p class="text-gray-400 text-sm">
+                    Complete brand identity redesign for a luxury beauty brand
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Project 2 -->
+            <div
+              class="project-card rounded-2xl overflow-hidden cursor-pointer hover-lift"
+              data-category="digital"
+              onclick="openProjectModal(1)"
+            >
+              <div class="aspect-[4/3] img-placeholder relative">
+                <svg
+                  class="absolute inset-0 m-auto w-24 h-24 text-amber-600/40"
+                  viewbox="0 0 100 100"
+                  fill="none"
+                >
+                  <rect
+                    x="15"
+                    y="20"
+                    width="70"
+                    height="50"
+                    rx="4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                  <line
+                    x1="15"
+                    y1="35"
+                    x2="85"
+                    y2="35"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                  <circle cx="25" cy="27" r="3" fill="currentColor" />
+                  <circle cx="35" cy="27" r="3" fill="currentColor" />
+                  <rect
+                    x="25"
+                    y="45"
+                    width="50"
+                    height="15"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="1"
+                  />
+                </svg>
+                <div
+                  class="project-info absolute inset-0 z-10 flex flex-col justify-end p-8"
+                >
+                  <span
+                    class="text-amber-500 text-sm tracking-widest uppercase mb-2"
+                    >Digital</span
+                  >
+                  <h3 class="font-display text-2xl mb-2">Fintech Dashboard</h3>
+                  <p class="text-gray-400 text-sm">
+                    UX/UI design for a next-gen financial platform
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Project 3 -->
+            <div
+              class="project-card rounded-2xl overflow-hidden cursor-pointer hover-lift"
+              data-category="strategy"
+              onclick="openProjectModal(2)"
+            >
+              <div class="aspect-[4/3] img-placeholder relative">
+                <svg
+                  class="absolute inset-0 m-auto w-24 h-24 text-amber-600/40"
+                  viewbox="0 0 100 100"
+                  fill="none"
+                >
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="35"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M50 15 L50 50 L75 50"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                  <circle cx="50" cy="50" r="5" fill="currentColor" />
+                </svg>
+                <div
+                  class="project-info absolute inset-0 z-10 flex flex-col justify-end p-8"
+                >
+                  <span
+                    class="text-amber-500 text-sm tracking-widest uppercase mb-2"
+                    >Strategy</span
+                  >
+                  <h3 class="font-display text-2xl mb-2">Meridian Hotels</h3>
+                  <p class="text-gray-400 text-sm">
+                    Brand strategy and positioning for hospitality group
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Project 4 -->
+            <div
+              class="project-card rounded-2xl overflow-hidden cursor-pointer hover-lift"
+              data-category="branding"
+              onclick="openProjectModal(3)"
+            >
+              <div class="aspect-[4/3] img-placeholder relative">
+                <svg
+                  class="absolute inset-0 m-auto w-24 h-24 text-amber-600/40"
+                  viewbox="0 0 100 100"
+                  fill="none"
+                >
+                  <polygon
+                    points="50,15 85,35 85,65 50,85 15,65 15,35"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    fill="none"
+                  />
+                  <polygon
+                    points="50,30 70,40 70,60 50,70 30,60 30,40"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    fill="none"
+                  />
+                </svg>
+                <div
+                  class="project-info absolute inset-0 z-10 flex flex-col justify-end p-8"
+                >
+                  <span
+                    class="text-amber-500 text-sm tracking-widest uppercase mb-2"
+                    >Branding</span
+                  >
+                  <h3 class="font-display text-2xl mb-2">Vertex Tech</h3>
+                  <p class="text-gray-400 text-sm">
+                    Visual identity for an innovative tech startup
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- View All Button -->
+          <div class="text-center mt-16">
+            <button class="btn-outline rounded-full">View All Projects</button>
+          </div>
+        </div>
+      </section>
+      <!-- About Section -->
+      <section id="about" class="py-32 relative overflow-hidden">
+        <div class="absolute inset-0">
+          <div
+            class="absolute top-1/2 left-0 w-96 h-96 bg-gradient-to-r from-amber-900/10 to-transparent rounded-full blur-3xl transform -translate-y-1/2"
+          ></div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+          <div class="grid lg:grid-cols-2 gap-20 items-center">
+            <!-- About Image -->
+            <div class="relative">
+              <div
+                class="aspect-[3/4] img-placeholder rounded-3xl overflow-hidden flex items-center justify-center"
+              >
+                <svg
+                  class="w-40 h-40 text-amber-600/30"
+                  viewbox="0 0 100 100"
+                  fill="none"
+                >
+                  <circle
+                    cx="50"
+                    cy="30"
+                    r="18"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M15 90 C15 55 85 55 85 90"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    fill="none"
+                  />
+                </svg>
+              </div>
+              <div
+                class="absolute -bottom-8 -right-8 p-8 rounded-2xl"
+                style="background: var(--color-surface)"
+              >
+                <p class="font-display text-5xl gradient-text">50+</p>
+                <p class="text-gray-400">Happy Clients</p>
+              </div>
+            </div>
+            <!-- About Content -->
+            <div>
+              <p class="text-sm tracking-widest uppercase text-amber-500 mb-4">
+                About Me
+              </p>
+              <h2
+                class="font-display text-4xl md:text-5xl mb-8"
+                id="about-heading"
+              >
+                Turning Vision Into Reality
+              </h2>
+              <div class="section-divider mb-8"></div>
+              <p class="text-gray-400 text-lg mb-6" id="about-description">
+                With over a decade of experience in creative direction and brand
+                strategy, I've had the privilege of working with some of the
+                world's most innovative companies to transform their visual
+                identity and market presence.
+              </p>
+              <p class="text-gray-400 mb-8">
+                My approach combines strategic thinking with creative
+                excellence, ensuring that every project not only looks stunning
+                but also achieves measurable business results. I believe in the
+                power of design to create meaningful connections between brands
+                and their audiences.
+              </p>
+              <!-- Skills -->
+              <div class="grid grid-cols-2 gap-6 mb-10">
+                <div class="flex items-center gap-3">
+                  <div class="w-2 h-2 bg-amber-500 rounded-full"></div>
+                  <span class="text-sm">Brand Strategy</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="w-2 h-2 bg-amber-500 rounded-full"></div>
+                  <span class="text-sm">Visual Identity</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="w-2 h-2 bg-amber-500 rounded-full"></div>
+                  <span class="text-sm">UX/UI Design</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="w-2 h-2 bg-amber-500 rounded-full"></div>
+                  <span class="text-sm">Art Direction</span>
+                </div>
+              </div>
+              <a href="#contact" class="btn-primary rounded-full inline-block"
+                >Work With Me</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Services Section -->
+      <section
+        id="services"
+        class="py-32"
+        style="background: var(--color-surface)"
+      >
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+          <div class="text-center mb-20">
+            <p class="text-sm tracking-widest uppercase text-amber-500 mb-4">
+              Services
+            </p>
+            <h2 class="font-display text-4xl md:text-5xl mb-6">What I Offer</h2>
+            <div class="section-divider mx-auto"></div>
+          </div>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Service 1 -->
+            <div class="service-card p-10 rounded-2xl">
+              <div
+                class="service-icon w-16 h-16 bg-amber-500/10 rounded-2xl flex items-center justify-center mb-8"
+              >
+                <svg
+                  class="w-8 h-8 text-amber-500"
+                  fill="none"
+                  viewbox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
+                  />
+                </svg>
+              </div>
+              <h3 class="font-display text-2xl mb-4">Brand Identity</h3>
+              <p class="text-gray-400 mb-6">
+                Complete visual identity systems including logos, color
+                palettes, typography, and brand guidelines.
+              </p>
+              <a
+                href="#contact"
+                class="text-amber-500 text-sm tracking-widest uppercase flex items-center gap-2 hover:gap-4 transition-all"
+              >
+                Learn More
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  viewbox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  /></svg
+              ></a>
+            </div>
+            <!-- Service 2 -->
+            <div class="service-card p-10 rounded-2xl">
+              <div
+                class="service-icon w-16 h-16 bg-amber-500/10 rounded-2xl flex items-center justify-center mb-8"
+              >
+                <svg
+                  class="w-8 h-8 text-amber-500"
+                  fill="none"
+                  viewbox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
+              </div>
+              <h3 class="font-display text-2xl mb-4">Digital Design</h3>
+              <p class="text-gray-400 mb-6">
+                User-centered website and app design that combines aesthetics
+                with exceptional user experience.
+              </p>
+              <a
+                href="#contact"
+                class="text-amber-500 text-sm tracking-widest uppercase flex items-center gap-2 hover:gap-4 transition-all"
+              >
+                Learn More
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  viewbox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  /></svg
+              ></a>
+            </div>
+            <!-- Service 3 -->
+            <div class="service-card p-10 rounded-2xl">
+              <div
+                class="service-icon w-16 h-16 bg-amber-500/10 rounded-2xl flex items-center justify-center mb-8"
+              >
+                <svg
+                  class="w-8 h-8 text-amber-500"
+                  fill="none"
+                  viewbox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                  />
+                </svg>
+              </div>
+              <h3 class="font-display text-2xl mb-4">Brand Strategy</h3>
+              <p class="text-gray-400 mb-6">
+                Strategic positioning, messaging frameworks, and market
+                differentiation to elevate your brand.
+              </p>
+              <a
+                href="#contact"
+                class="text-amber-500 text-sm tracking-widest uppercase flex items-center gap-2 hover:gap-4 transition-all"
+              >
+                Learn More
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  viewbox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  /></svg
+              ></a>
+            </div>
+            <!-- Service 4 -->
+            <div class="service-card p-10 rounded-2xl">
+              <div
+                class="service-icon w-16 h-16 bg-amber-500/10 rounded-2xl flex items-center justify-center mb-8"
+              >
+                <svg
+                  class="w-8 h-8 text-amber-500"
+                  fill="none"
+                  viewbox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  />
+                </svg>
+              </div>
+              <h3 class="font-display text-2xl mb-4">Art Direction</h3>
+              <p class="text-gray-400 mb-6">
+                Creative direction for campaigns, photoshoots, and visual
+                content that tells your brand story.
+              </p>
+              <a
+                href="#contact"
+                class="text-amber-500 text-sm tracking-widest uppercase flex items-center gap-2 hover:gap-4 transition-all"
+              >
+                Learn More
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  viewbox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  /></svg
+              ></a>
+            </div>
+            <!-- Service 5 -->
+            <div class="service-card p-10 rounded-2xl">
+              <div
+                class="service-icon w-16 h-16 bg-amber-500/10 rounded-2xl flex items-center justify-center mb-8"
+              >
+                <svg
+                  class="w-8 h-8 text-amber-500"
+                  fill="none"
+                  viewbox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                  />
+                </svg>
+              </div>
+              <h3 class="font-display text-2xl mb-4">Packaging Design</h3>
+              <p class="text-gray-400 mb-6">
+                Distinctive packaging solutions that stand out on shelves and
+                create memorable unboxing experiences.
+              </p>
+              <a
+                href="#contact"
+                class="text-amber-500 text-sm tracking-widest uppercase flex items-center gap-2 hover:gap-4 transition-all"
+              >
+                Learn More
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  viewbox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  /></svg
+              ></a>
+            </div>
+            <!-- Service 6 -->
+            <div class="service-card p-10 rounded-2xl">
+              <div
+                class="service-icon w-16 h-16 bg-amber-500/10 rounded-2xl flex items-center justify-center mb-8"
+              >
+                <svg
+                  class="w-8 h-8 text-amber-500"
+                  fill="none"
+                  viewbox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                  />
+                </svg>
+              </div>
+              <h3 class="font-display text-2xl mb-4">Consulting</h3>
+              <p class="text-gray-400 mb-6">
+                Expert guidance on creative strategy, team building, and design
+                process optimization.
+              </p>
+              <a
+                href="#contact"
+                class="text-amber-500 text-sm tracking-widest uppercase flex items-center gap-2 hover:gap-4 transition-all"
+              >
+                Learn More
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  viewbox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  /></svg
+              ></a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Testimonials Section -->
+      <section class="py-32 relative overflow-hidden">
+        <div class="absolute inset-0">
+          <div
+            class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-amber-900/20 to-transparent rounded-full blur-3xl"
+          ></div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+          <div class="text-center mb-20">
+            <p class="text-sm tracking-widest uppercase text-amber-500 mb-4">
+              Testimonials
+            </p>
+            <h2 class="font-display text-4xl md:text-5xl mb-6">
+              Client Stories
+            </h2>
+            <div class="section-divider mx-auto"></div>
+          </div>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Testimonial 1 -->
+            <div class="testimonial-card p-10 rounded-2xl hover-lift">
+              <div class="flex gap-1 mb-6">
+                <svg
+                  class="w-5 h-5 text-amber-500"
+                  fill="currentColor"
+                  viewbox="0 0 20 20"
+                >
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                  />
+                </svg>
+                <svg
+                  class="w-5 h-5 text-amber-500"
+                  fill="currentColor"
+                  viewbox="0 0 20 20"
+                >
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                  />
+                </svg>
+                <svg
+                  class="w-5 h-5 text-amber-500"
+                  fill="currentColor"
+                  viewbox="0 0 20 20"
+                >
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                  />
+                </svg>
+                <svg
+                  class="w-5 h-5 text-amber-500"
+                  fill="currentColor"
+                  viewbox="0 0 20 20"
+                >
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                  />
+                </svg>
+                <svg
+                  class="w-5 h-5 text-amber-500"
+                  fill="currentColor"
+                  viewbox="0 0 20 20"
+                >
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                  />
+                </svg>
+              </div>
+              <p class="text-gray-300 mb-8 italic">
+                "Pumpkin_Coder🎃 transformed our brand from the ground up. Her
+                strategic thinking combined with exceptional design skills
+                resulted in a 200% increase in brand recognition."
+              </p>
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-12 h-12 bg-amber-500/20 rounded-full flex items-center justify-center"
+                >
+                  <span class="font-display text-amber-500">SM</span>
+                </div>
+                <div>
+                  <p class="font-medium">Sarah Mitchell</p>
+                  <p class="text-sm text-gray-400">CEO, Lumina Cosmetics</p>
+                </div>
+              </div>
+            </div>
+            <!-- Testimonial 2 -->
+            <div class="testimonial-card p-10 rounded-2xl hover-lift">
+              <div class="flex gap-1 mb-6">
+                <svg
+                  class="w-5 h-5 text-amber-500"
+                  fill="currentColor"
+                  viewbox="0 0 20 20"
+                >
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                  />
+                </svg>
+                <svg
+                  class="w-5 h-5 text-amber-500"
+                  fill="currentColor"
+                  viewbox="0 0 20 20"
+                >
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                  />
+                </svg>
+                <svg
+                  class="w-5 h-5 text-amber-500"
+                  fill="currentColor"
+                  viewbox="0 0 20 20"
+                >
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                  />
+                </svg>
+                <svg
+                  class="w-5 h-5 text-amber-500"
+                  fill="currentColor"
+                  viewbox="0 0 20 20"
+                >
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                  />
+                </svg>
+                <svg
+                  class="w-5 h-5 text-amber-500"
+                  fill="currentColor"
+                  viewbox="0 0 20 20"
+                >
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                  />
+                </svg>
+              </div>
+              <p class="text-gray-300 mb-8 italic">
+                "Working with Pumpkin_Coder🎃 was a game-changer. She understood
+                our vision immediately and delivered a digital experience that
+                exceeded all expectations."
+              </p>
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-12 h-12 bg-amber-500/20 rounded-full flex items-center justify-center"
+                >
+                  <span class="font-display text-amber-500">JR</span>
+                </div>
+                <div>
+                  <p class="font-medium">James Rodriguez</p>
+                  <p class="text-sm text-gray-400">Founder, Vertex Tech</p>
+                </div>
+              </div>
+            </div>
+            <!-- Testimonial 3 -->
+            <div class="testimonial-card p-10 rounded-2xl hover-lift">
+              <div class="flex gap-1 mb-6">
+                <svg
+                  class="w-5 h-5 text-amber-500"
+                  fill="currentColor"
+                  viewbox="0 0 20 20"
+                >
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                  />
+                </svg>
+                <svg
+                  class="w-5 h-5 text-amber-500"
+                  fill="currentColor"
+                  viewbox="0 0 20 20"
+                >
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                  />
+                </svg>
+                <svg
+                  class="w-5 h-5 text-amber-500"
+                  fill="currentColor"
+                  viewbox="0 0 20 20"
+                >
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                  />
+                </svg>
+                <svg
+                  class="w-5 h-5 text-amber-500"
+                  fill="currentColor"
+                  viewbox="0 0 20 20"
+                >
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                  />
+                </svg>
+                <svg
+                  class="w-5 h-5 text-amber-500"
+                  fill="currentColor"
+                  viewbox="0 0 20 20"
+                >
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                  />
+                </svg>
+              </div>
+              <p class="text-gray-300 mb-8 italic">
+                "The brand strategy Pumpkin_Coder🎃 developed helped us stand
+                out in a crowded market. Our bookings increased by 85% within
+                the first quarter."
+              </p>
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-12 h-12 bg-amber-500/20 rounded-full flex items-center justify-center"
+                >
+                  <span class="font-display text-amber-500">EP</span>
+                </div>
+                <div>
+                  <p class="font-medium">Emily Parker</p>
+                  <p class="text-sm text-gray-400">CMO, Meridian Hotels</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Blog/Insights Section -->
+      <section id="blog" class="py-32" style="background: var(--color-surface)">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+          <div
+            class="flex flex-col md:flex-row md:items-end justify-between mb-20"
+          >
+            <div>
+              <p class="text-sm tracking-widest uppercase text-amber-500 mb-4">
+                Blog
+              </p>
+              <h2 class="font-display text-4xl md:text-5xl">Latest Insights</h2>
+              <div class="section-divider mt-6"></div>
+            </div>
+            <a href="#" class="btn-outline rounded-full mt-8 md:mt-0"
+              >View All Articles</a
+            >
+          </div>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Blog Post 1 -->
+            <article class="blog-card group cursor-pointer">
+              <div
+                class="aspect-[16/10] img-placeholder rounded-2xl overflow-hidden mb-6"
+              >
+                <div
+                  class="blog-image w-full h-full flex items-center justify-center transition-transform duration-500"
+                >
+                  <svg
+                    class="w-20 h-20 text-amber-600/30"
+                    viewbox="0 0 100 100"
+                    fill="none"
+                  >
+                    <rect
+                      x="20"
+                      y="20"
+                      width="60"
+                      height="60"
+                      rx="4"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    />
+                    <line
+                      x1="30"
+                      y1="40"
+                      x2="70"
+                      y2="40"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    />
+                    <line
+                      x1="30"
+                      y1="50"
+                      x2="60"
+                      y2="50"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    />
+                    <line
+                      x1="30"
+                      y1="60"
+                      x2="50"
+                      y2="60"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div class="flex items-center gap-4 mb-4">
+                <span class="text-xs tracking-widest uppercase text-amber-500"
+                  >Brand Strategy</span
+                >
+                <span class="text-xs text-gray-500">5 min read</span>
+              </div>
+              <h3
+                class="font-display text-xl mb-3 group-hover:text-amber-500 transition-colors"
+              >
+                The Art of Brand Storytelling in 2024
+              </h3>
+              <p class="text-gray-400 text-sm mb-4">
+                Discover how authentic narratives can transform your brand's
+                connection with audiences.
+              </p>
+              <span
+                class="text-amber-500 text-sm flex items-center gap-2 group-hover:gap-4 transition-all"
+              >
+                Read More
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  viewbox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  /></svg
+              ></span>
+            </article>
+            <!-- Blog Post 2 -->
+            <article class="blog-card group cursor-pointer">
+              <div
+                class="aspect-[16/10] img-placeholder rounded-2xl overflow-hidden mb-6"
+              >
+                <div
+                  class="blog-image w-full h-full flex items-center justify-center transition-transform duration-500"
+                >
+                  <svg
+                    class="w-20 h-20 text-amber-600/30"
+                    viewbox="0 0 100 100"
+                    fill="none"
+                  >
+                    <circle
+                      cx="50"
+                      cy="50"
+                      r="30"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    />
+                    <circle
+                      cx="50"
+                      cy="50"
+                      r="15"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    />
+                    <line
+                      x1="50"
+                      y1="20"
+                      x2="50"
+                      y2="35"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    />
+                    <line
+                      x1="50"
+                      y1="65"
+                      x2="50"
+                      y2="80"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    />
+                    <line
+                      x1="20"
+                      y1="50"
+                      x2="35"
+                      y2="50"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    />
+                    <line
+                      x1="65"
+                      y1="50"
+                      x2="80"
+                      y2="50"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div class="flex items-center gap-4 mb-4">
+                <span class="text-xs tracking-widest uppercase text-amber-500"
+                  >Design</span
+                >
+                <span class="text-xs text-gray-500">8 min read</span>
+              </div>
+              <h3
+                class="font-display text-xl mb-3 group-hover:text-amber-500 transition-colors"
+              >
+                Minimalism vs. Maximalism: Finding Your Balance
+              </h3>
+              <p class="text-gray-400 text-sm mb-4">
+                Exploring the design spectrum and how to choose the right
+                aesthetic for your brand.
+              </p>
+              <span
+                class="text-amber-500 text-sm flex items-center gap-2 group-hover:gap-4 transition-all"
+              >
+                Read More
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  viewbox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  /></svg
+              ></span>
+            </article>
+            <!-- Blog Post 3 -->
+            <article class="blog-card group cursor-pointer">
+              <div
+                class="aspect-[16/10] img-placeholder rounded-2xl overflow-hidden mb-6"
+              >
+                <div
+                  class="blog-image w-full h-full flex items-center justify-center transition-transform duration-500"
+                >
+                  <svg
+                    class="w-20 h-20 text-amber-600/30"
+                    viewbox="0 0 100 100"
+                    fill="none"
+                  >
+                    <path
+                      d="M20 80 L40 50 L55 65 L80 30"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      fill="none"
+                    />
+                    <circle cx="20" cy="80" r="4" fill="currentColor" />
+                    <circle cx="40" cy="50" r="4" fill="currentColor" />
+                    <circle cx="55" cy="65" r="4" fill="currentColor" />
+                    <circle cx="80" cy="30" r="4" fill="currentColor" />
+                  </svg>
+                </div>
+              </div>
+              <div class="flex items-center gap-4 mb-4">
+                <span class="text-xs tracking-widest uppercase text-amber-500"
+                  >Business</span
+                >
+                <span class="text-xs text-gray-500">6 min read</span>
+              </div>
+              <h3
+                class="font-display text-xl mb-3 group-hover:text-amber-500 transition-colors"
+              >
+                ROI of Good Design: The Numbers That Matter
+              </h3>
+              <p class="text-gray-400 text-sm mb-4">
+                How investing in quality design translates to measurable
+                business outcomes.
+              </p>
+              <span
+                class="text-amber-500 text-sm flex items-center gap-2 group-hover:gap-4 transition-all"
+              >
+                Read More
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  viewbox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  /></svg
+              ></span>
+            </article>
+          </div>
+        </div>
+      </section>
+      <!-- Contact Section -->
+      <section id="contact" class="py-32 relative overflow-hidden">
+        <div class="absolute inset-0">
+          <div
+            class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-96 bg-gradient-to-t from-amber-900/10 to-transparent"
+          ></div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+          <div class="grid lg:grid-cols-2 gap-20">
+            <!-- Contact Info -->
+            <div>
+              <p class="text-sm tracking-widest uppercase text-amber-500 mb-4">
+                Get In Touch
+              </p>
+              <h2 class="font-display text-4xl md:text-5xl mb-8">
+                Let's Create Something Amazing
+              </h2>
+              <div class="section-divider mb-8"></div>
+              <p class="text-gray-400 text-lg mb-10">
+                Ready to elevate your brand? I'd love to hear about your
+                project. Reach out and let's start a conversation about how we
+                can work together.
+              </p>
+              <div class="space-y-6">
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-12 h-12 bg-amber-500/10 rounded-full flex items-center justify-center"
+                  >
+                    <svg
+                      class="w-5 h-5 text-amber-500"
+                      fill="none"
+                      viewbox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="1.5"
+                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="text-sm text-gray-400">Email</p>
+                    <p>pumpkincoder44@gmail.com</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-12 h-12 bg-amber-500/10 rounded-full flex items-center justify-center"
+                  >
+                    <svg
+                      class="w-5 h-5 text-amber-500"
+                      fill="none"
+                      viewbox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="1.5"
+                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                      />
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="1.5"
+                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="text-sm text-gray-400">Location</p>
+                    <p>Ethiopia, AA</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Social Links -->
+              <div class="flex gap-4 mt-12">
+                <a
+                  href="#"
+                  class="w-12 h-12 border border-gray-700 rounded-full flex items-center justify-center hover:border-amber-500 hover:text-amber-500 transition-all"
+                  aria-label="LinkedIn"
+                >
+                  <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+                    <path
+                      d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                    /></svg
+                ></a>
+                <a
+                  href="#"
+                  class="w-12 h-12 border border-gray-700 rounded-full flex items-center justify-center hover:border-amber-500 hover:text-amber-500 transition-all"
+                  aria-label="Dribbble"
+                >
+                  <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+                    <path
+                      d="M12 0c-6.628 0-12 5.373-12 12s5.372 12 12 12 12-5.373 12-12-5.372-12-12-12zm9.885 11.441c-2.575-.422-4.943-.445-7.103-.073-.244-.563-.497-1.125-.767-1.68 2.31-1 4.165-2.358 5.548-4.082 1.35 1.594 2.197 3.619 2.322 5.835zm-3.842-7.282c-1.205 1.554-2.868 2.783-4.986 3.68-1.016-1.861-2.178-3.676-3.488-5.438.779-.197 1.591-.314 2.431-.314 2.275 0 4.368.779 6.043 2.072zm-10.516-.993c1.331 1.742 2.511 3.538 3.537 5.381-2.43.715-5.331 1.082-8.684 1.105.692-2.835 2.601-5.193 5.147-6.486zm-5.44 8.834l.013-.256c3.849-.005 7.169-.448 9.95-1.322.233.475.456.952.67 1.432-3.38 1.057-6.165 3.222-8.337 6.48-1.432-1.719-2.296-3.927-2.296-6.334zm3.829 7.81c1.969-3.088 4.482-5.098 7.598-6.027.928 2.42 1.609 4.91 2.043 7.46-3.349 1.291-6.953.666-9.641-1.433zm11.586.43c-.438-2.353-1.08-4.653-1.92-6.897 1.876-.265 3.94-.196 6.199.196-.437 2.786-2.028 5.192-4.279 6.701z"
+                    /></svg
+                ></a>
+                <a
+                  href="#"
+                  class="w-12 h-12 border border-gray-700 rounded-full flex items-center justify-center hover:border-amber-500 hover:text-amber-500 transition-all"
+                  aria-label="Instagram"
+                >
+                  <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+                    <path
+                      d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                    /></svg
+                ></a>
+                <a
+                  href="#"
+                  class="w-12 h-12 border border-gray-700 rounded-full flex items-center justify-center hover:border-amber-500 hover:text-amber-500 transition-all"
+                  aria-label="Behance"
+                >
+                  <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+                    <path
+                      d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14h-8.027c.13 3.211 3.483 3.312 4.588 2.029h3.168zm-7.686-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988h-6.466v-14.967h6.953c5.476.081 5.58 5.444 2.72 6.906 3.461 1.26 3.577 8.061-3.207 8.061zm-3.466-8.988h3.584c2.508 0 2.906-3-.312-3h-3.272v3zm3.391 3h-3.391v3.016h3.341c3.055 0 2.868-3.016.05-3.016z"
+                    /></svg
+                ></a>
+              </div>
+            </div>
+            <!-- Contact Form -->
+            <div
+              class="p-10 rounded-3xl"
+              style="background: var(--color-surface)"
+            >
+              <form id="contact-form" onsubmit="handleContactSubmit(event)">
+                <div class="space-y-6">
+                  <div>
+                    <label for="name" class="block text-sm mb-2"
+                      >Your Name</label
+                    >
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      class="form-input rounded-xl"
+                      placeholder="John Doe"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label for="email" class="block text-sm mb-2"
+                      >Email Address</label
+                    >
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      class="form-input rounded-xl"
+                      placeholder="john@example.com"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label for="subject" class="block text-sm mb-2"
+                      >Subject</label
+                    >
+                    <input
+                      type="text"
+                      id="subject"
+                      name="subject"
+                      class="form-input rounded-xl"
+                      placeholder="Project Inquiry"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label for="message" class="block text-sm mb-2"
+                      >Message</label
+                    >
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows="5"
+                      class="form-input rounded-xl resize-none"
+                      placeholder="Tell me about your project..."
+                      required
+                    ></textarea>
+                  </div>
+                  <button
+                    type="submit"
+                    class="btn-primary rounded-full w-full flex items-center justify-center gap-2"
+                    id="submit-btn"
+                  >
+                    <span id="submit-text">Send Message</span>
+                    <div class="spinner hidden" id="submit-spinner"></div>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Footer -->
+      <footer class="py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+          <div
+            class="flex flex-col md:flex-row items-center justify-between gap-6"
+          >
+            <p class="font-display text-2xl gradient-text">Pumpkin_Coder🎃</p>
+            <nav class="flex flex-wrap items-center justify-center gap-8">
+              <a
+                href="#work"
+                class="text-sm text-gray-400 hover:text-amber-500 transition-colors"
+                >Work</a
+              >
+              <a
+                href="#about"
+                class="text-sm text-gray-400 hover:text-amber-500 transition-colors"
+                >About</a
+              >
+              <a
+                href="#services"
+                class="text-sm text-gray-400 hover:text-amber-500 transition-colors"
+                >Services</a
+              >
+              <a
+                href="#blog"
+                class="text-sm text-gray-400 hover:text-amber-500 transition-colors"
+                >Blog</a
+              >
+              <a
+                href="#contact"
+                class="text-sm text-gray-400 hover:text-amber-500 transition-colors"
+                >Contact</a
+              >
+            </nav>
+            <p class="text-sm text-gray-500">© 2026 All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+      <!-- Project Modal -->
+      <div class="fixed inset-0 z-50 hidden" id="project-modal">
+        <div
+          class="modal-backdrop absolute inset-0"
+          onclick="closeProjectModal()"
+        ></div>
+        <div
+          class="absolute inset-4 md:inset-10 lg:inset-20 bg-black rounded-3xl overflow-hidden animate-scale-in"
+          style="background: var(--color-bg)"
+        >
+          <button
+            class="absolute top-6 right-6 w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-amber-500 transition-colors z-10"
+            onclick="closeProjectModal()"
+            aria-label="Close modal"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              viewbox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+          <div class="h-full overflow-auto p-8 md:p-16">
+            <div class="max-w-4xl mx-auto">
+              <span
+                class="text-amber-500 text-sm tracking-widest uppercase mb-4 block"
+                id="modal-category"
+                >Branding</span
+              >
+              <h2
+                class="font-display text-4xl md:text-5xl mb-6"
+                id="modal-title"
+              >
+                Project Title
+              </h2>
+              <p class="text-gray-400 text-lg mb-12" id="modal-description">
+                Project description goes here.
+              </p>
+              <div
+                class="aspect-video img-placeholder rounded-2xl mb-12 flex items-center justify-center"
+              >
+                <svg
+                  class="w-32 h-32 text-amber-600/30"
+                  viewbox="0 0 100 100"
+                  fill="none"
+                >
+                  <rect
+                    x="10"
+                    y="10"
+                    width="80"
+                    height="80"
+                    rx="8"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                  <circle
+                    cx="35"
+                    cy="35"
+                    r="10"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M10 70 L40 50 L60 65 L90 40"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                </svg>
+              </div>
+              <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div>
+                  <p class="text-sm text-gray-500 mb-2">Client</p>
+                  <p id="modal-client">Client Name</p>
+                </div>
+                <div>
+                  <p class="text-sm text-gray-500 mb-2">Year</p>
+                  <p id="modal-year">2025</p>
+                </div>
+                <div>
+                  <p class="text-sm text-gray-500 mb-2">Services</p>
+                  <p id="modal-services">Brand Strategy, Visual Identity</p>
+                </div>
+              </div>
+              <div class="prose prose-invert max-w-none">
+                <h3 class="font-display text-2xl mb-4">The Challenge</h3>
+                <p class="text-gray-400 mb-8" id="modal-challenge">
+                  Challenge description goes here.
+                </p>
+                <h3 class="font-display text-2xl mb-4">The Solution</h3>
+                <p class="text-gray-400" id="modal-solution">
+                  Solution description goes here.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Toast Notification -->
+      <div
+        class="toast fixed bottom-8 right-8 p-6 rounded-2xl shadow-2xl z-50"
+        id="toast"
+        style="background: var(--color-surface)"
+      >
+        <div class="flex items-center gap-4">
+          <div
+            class="w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center"
+          >
+            <svg
+              class="w-5 h-5 text-green-500"
+              fill="none"
+              viewbox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+          </div>
+          <div>
+            <p class="font-medium" id="toast-title">Success!</p>
+            <p class="text-sm text-gray-400" id="toast-message">
+              Your message has been sent.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Configuration
+      const defaultConfig = {
+        site_name: "Pumpkin_Coder🎃",
+        hero_title: "Crafting Memorable Brand Experiences",
+        hero_subtitle:
+          "I help ambitious brands tell their story through strategic design, creating lasting connections with their audience.",
+        about_heading: "Turning Vision Into Reality",
+        about_description:
+          "With over a decade of experience in creative direction and brand strategy, I've had the privilege of working with some of the world's most innovative companies to transform their visual identity and market presence.",
+        background_color: "#0a0a0a",
+        surface_color: "#161616",
+        text_color: "#f5f5f5",
+        primary_color: "#c9a962",
+        secondary_color: "#8b8b8b",
+      };
+
+      let config = { ...defaultConfig };
+
+      // Project data
+      const projects = [
+        {
+          category: "Branding",
+          title: "Lumina Cosmetics",
+          description:
+            "Complete brand identity redesign for a luxury beauty brand",
+          client: "Lumina Cosmetics Inc.",
+          year: "2024",
+          services: "Brand Strategy, Visual Identity, Packaging",
+          challenge:
+            "Lumina Cosmetics needed to reposition themselves in the competitive luxury beauty market. Their existing brand felt outdated and failed to connect with their target demographic of modern, sophisticated consumers.",
+          solution:
+            "We developed a comprehensive brand strategy that emphasized clean beauty and sustainable luxury. The new visual identity features an elegant, minimalist aesthetic with a refined gold and cream color palette that speaks to quality and sophistication.",
+        },
+        {
+          category: "Digital",
+          title: "Fintech Dashboard",
+          description: "UX/UI design for a next-gen financial platform",
+          client: "Nova Financial",
+          year: "2024",
+          services: "UX Research, UI Design, Prototyping",
+          challenge:
+            "Nova Financial wanted to create a consumer-facing dashboard that made complex financial data accessible and engaging for everyday users while maintaining the trust and security expected in fintech.",
+          solution:
+            "Through extensive user research, we designed an intuitive interface that presents financial insights through clear visualizations and personalized recommendations. The dark-mode design with strategic color accents guides users through their financial journey.",
+        },
+        {
+          category: "Strategy",
+          title: "Meridian Hotels",
+          description: "Brand strategy and positioning for hospitality group",
+          client: "Meridian Hospitality Group",
+          year: "2023",
+          services: "Brand Strategy, Market Positioning, Guidelines",
+          challenge:
+            "Meridian Hotels was expanding into new markets and needed a brand strategy that could unify their diverse property portfolio while allowing for local market adaptation.",
+          solution:
+            "We created a flexible brand architecture that maintains consistency across all properties while celebrating local culture and experiences. The strategy resulted in an 85% increase in bookings within the first quarter.",
+        },
+        {
+          category: "Branding",
+          title: "Vertex Tech",
+          description: "Visual identity for an innovative tech startup",
+          client: "Vertex Technologies",
+          year: "2023",
+          services: "Logo Design, Brand Identity, Digital Assets",
+          challenge:
+            "As a new player in the competitive B2B tech space, Vertex needed a brand identity that would establish credibility while differentiating them from established competitors.",
+          solution:
+            "The geometric mark symbolizes precision and innovation, while the bold color palette breaks from typical tech conventions. The modular identity system allows for creative flexibility across all touchpoints.",
+        },
+      ];
+
+      // Initialize Element SDK
+      if (window.elementSdk) {
+        window.elementSdk.init({
+          defaultConfig,
+          onConfigChange: async (newConfig) => {
+            config = { ...defaultConfig, ...newConfig };
+            applyConfig();
+          },
+          mapToCapabilities: (cfg) => ({
+            recolorables: [
+              {
+                get: () =>
+                  cfg.background_color || defaultConfig.background_color,
+                set: (value) => {
+                  cfg.background_color = value;
+                  window.elementSdk.setConfig({ background_color: value });
+                },
+              },
+              {
+                get: () => cfg.surface_color || defaultConfig.surface_color,
+                set: (value) => {
+                  cfg.surface_color = value;
+                  window.elementSdk.setConfig({ surface_color: value });
+                },
+              },
+              {
+                get: () => cfg.text_color || defaultConfig.text_color,
+                set: (value) => {
+                  cfg.text_color = value;
+                  window.elementSdk.setConfig({ text_color: value });
+                },
+              },
+              {
+                get: () => cfg.primary_color || defaultConfig.primary_color,
+                set: (value) => {
+                  cfg.primary_color = value;
+                  window.elementSdk.setConfig({ primary_color: value });
+                },
+              },
+              {
+                get: () => cfg.secondary_color || defaultConfig.secondary_color,
+                set: (value) => {
+                  cfg.secondary_color = value;
+                  window.elementSdk.setConfig({ secondary_color: value });
+                },
+              },
+            ],
+            borderables: [],
+            fontEditable: {
+              get: () => cfg.font_family || "Playfair Display",
+              set: (value) => {
+                cfg.font_family = value;
+                window.elementSdk.setConfig({ font_family: value });
+              },
+            },
+            fontSizeable: {
+              get: () => cfg.font_size || 16,
+              set: (value) => {
+                cfg.font_size = value;
+                window.elementSdk.setConfig({ font_size: value });
+              },
+            },
+          }),
+          mapToEditPanelValues: (cfg) =>
+            new Map([
+              ["site_name", cfg.site_name || defaultConfig.site_name],
+              ["hero_title", cfg.hero_title || defaultConfig.hero_title],
+              [
+                "hero_subtitle",
+                cfg.hero_subtitle || defaultConfig.hero_subtitle,
+              ],
+              [
+                "about_heading",
+                cfg.about_heading || defaultConfig.about_heading,
+              ],
+              [
+                "about_description",
+                cfg.about_description || defaultConfig.about_description,
+              ],
+            ]),
+        });
+      }
+
+      // Initialize Data SDK
+      const dataHandler = {
+        onDataChanged(data) {
+          // Contact form submissions are stored but not displayed
+          console.log("Contact submissions:", data.length);
+        },
+      };
+
+      if (window.dataSdk) {
+        window.dataSdk.init(dataHandler);
+      }
+
+      // Apply configuration
+      function applyConfig() {
+        const root = document.documentElement;
+        root.style.setProperty(
+          "--color-bg",
+          config.background_color || defaultConfig.background_color,
+        );
+        root.style.setProperty(
+          "--color-surface",
+          config.surface_color || defaultConfig.surface_color,
+        );
+        root.style.setProperty(
+          "--color-text",
+          config.text_color || defaultConfig.text_color,
+        );
+        root.style.setProperty(
+          "--color-primary",
+          config.primary_color || defaultConfig.primary_color,
+        );
+        root.style.setProperty(
+          "--color-secondary",
+          config.secondary_color || defaultConfig.secondary_color,
+        );
+
+        document.body.style.backgroundColor =
+          config.background_color || defaultConfig.background_color;
+        document.body.style.color =
+          config.text_color || defaultConfig.text_color;
+
+        // Update text content
+        const siteName = document.getElementById("site-name");
+        if (siteName)
+          siteName.textContent = config.site_name || defaultConfig.site_name;
+
+        const heroTitle = document.getElementById("hero-title");
+        if (heroTitle) {
+          const title = config.hero_title || defaultConfig.hero_title;
+          const words = title.split(" ");
+          if (words.length > 1) {
+            heroTitle.innerHTML = `${words[0]} <span class="gradient-text">${words[1]}</span> ${words.slice(2).join(" ")}`;
+          } else {
+            heroTitle.textContent = title;
+          }
+        }
+
+        const heroSubtitle = document.getElementById("hero-subtitle");
+        if (heroSubtitle)
+          heroSubtitle.textContent =
+            config.hero_subtitle || defaultConfig.hero_subtitle;
+
+        const aboutHeading = document.getElementById("about-heading");
+        if (aboutHeading)
+          aboutHeading.textContent =
+            config.about_heading || defaultConfig.about_heading;
+
+        const aboutDescription = document.getElementById("about-description");
+        if (aboutDescription)
+          aboutDescription.textContent =
+            config.about_description || defaultConfig.about_description;
+
+        // Update font
+        const fontFamily = config.font_family || "Playfair Display";
+        const baseFontStack = "Inter, sans-serif";
+        document.querySelectorAll(".font-display").forEach((el) => {
+          el.style.fontFamily = `${fontFamily}, serif`;
+        });
+
+        // Update font size
+        const baseSize = config.font_size || 16;
+        document.body.style.fontSize = `${baseSize}px`;
+      }
+
+      // Mobile menu
+      const menuBtn = document.getElementById("menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      let menuOpen = false;
+
+      menuBtn.addEventListener("click", () => {
+        menuOpen = !menuOpen;
+        mobileMenu.classList.toggle("open", menuOpen);
+
+        const line1 = document.getElementById("menu-line-1");
+        const line2 = document.getElementById("menu-line-2");
+        const line3 = document.getElementById("menu-line-3");
+
+        if (menuOpen) {
+          line1.style.transform = "rotate(45deg) translate(4px, 4px)";
+          line2.style.opacity = "0";
+          line3.style.transform = "rotate(-45deg) translate(4px, -4px)";
+          line3.style.width = "1.5rem";
+        } else {
+          line1.style.transform = "";
+          line2.style.opacity = "1";
+          line3.style.transform = "";
+          line3.style.width = "1rem";
+        }
+      });
+
+      function closeMobileMenu() {
+        menuOpen = false;
+        mobileMenu.classList.remove("open");
+        document.getElementById("menu-line-1").style.transform = "";
+        document.getElementById("menu-line-2").style.opacity = "1";
+        document.getElementById("menu-line-3").style.transform = "";
+        document.getElementById("menu-line-3").style.width = "1rem";
+      }
+
+      // Navbar scroll effect
+      let lastScroll = 0;
+      const navbar = document.getElementById("navbar");
+
+      document
+        .getElementById("app-wrapper")
+        .addEventListener("scroll", function () {
+          const currentScroll = this.scrollTop;
+
+          if (currentScroll > 100) {
+            navbar.style.background = "rgba(10, 10, 10, 0.95)";
+            navbar.style.backdropFilter = "blur(10px)";
+          } else {
+            navbar.style.background = "transparent";
+            navbar.style.backdropFilter = "none";
+          }
+
+          lastScroll = currentScroll;
+        });
+
+      // Project filtering
+      function filterProjects(category) {
+        const buttons = document.querySelectorAll(".filter-btn");
+        buttons.forEach((btn) => {
+          btn.classList.toggle("active", btn.dataset.filter === category);
+        });
+
+        const cards = document.querySelectorAll(".project-card");
+        cards.forEach((card) => {
+          const cardCategory = card.dataset.category;
+          if (category === "all" || cardCategory === category) {
+            card.style.display = "block";
+            card.style.animation = "fadeInUp 0.5s ease forwards";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      }
+
+      // Project modal
+      function openProjectModal(index) {
+        const project = projects[index];
+        const modal = document.getElementById("project-modal");
+
+        document.getElementById("modal-category").textContent =
+          project.category;
+        document.getElementById("modal-title").textContent = project.title;
+        document.getElementById("modal-description").textContent =
+          project.description;
+        document.getElementById("modal-client").textContent = project.client;
+        document.getElementById("modal-year").textContent = project.year;
+        document.getElementById("modal-services").textContent =
+          project.services;
+        document.getElementById("modal-challenge").textContent =
+          project.challenge;
+        document.getElementById("modal-solution").textContent =
+          project.solution;
+
+        modal.classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeProjectModal() {
+        document.getElementById("project-modal").classList.add("hidden");
+        document.body.style.overflow = "";
+      }
+
+      // Close modal on escape key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          closeProjectModal();
+        }
+      });
+
+      // Contact form submission
+      async function handleContactSubmit(e) {
+        e.preventDefault();
+
+        const form = e.target;
+        const submitBtn = document.getElementById("submit-btn");
+        const submitText = document.getElementById("submit-text");
+        const submitSpinner = document.getElementById("submit-spinner");
+
+        // Show loading state
+        submitBtn.disabled = true;
+        submitText.textContent = "Sending...";
+        submitSpinner.classList.remove("hidden");
+
+        const formData = {
+          name: form.name.value,
+          email: form.email.value,
+          subject: form.subject.value,
+          message: form.message.value,
+          submitted_at: new Date().toISOString(),
+        };
+
+        try {
+          if (window.dataSdk) {
+            const result = await window.dataSdk.create(formData);
+
+            if (result.isOk) {
+              showToast(
+                "Message Sent!",
+                "Thank you for reaching out. I'll get back to you soon.",
+              );
+              form.reset();
+            } else {
+              showToast(
+                "Error",
+                "Something went wrong. Please try again.",
+                true,
+              );
+            }
+          } else {
+            // Fallback if SDK not available
+            showToast(
+              "Message Sent!",
+              "Thank you for reaching out. I'll get back to you soon.",
+            );
+            form.reset();
+          }
+        } catch (error) {
+          showToast("Error", "Something went wrong. Please try again.", true);
+        }
+
+        // Reset button state
+        submitBtn.disabled = false;
+        submitText.textContent = "Send Message";
+        submitSpinner.classList.add("hidden");
+      }
+
+      // Toast notification
+      function showToast(title, message, isError = false) {
+        const toast = document.getElementById("toast");
+        const toastTitle = document.getElementById("toast-title");
+        const toastMessage = document.getElementById("toast-message");
+        const toastIcon = toast.querySelector("svg");
+        const toastIconBg = toast.querySelector(".w-10");
+
+        toastTitle.textContent = title;
+        toastMessage.textContent = message;
+
+        if (isError) {
+          toastIconBg.className =
+            "w-10 h-10 bg-red-500/20 rounded-full flex items-center justify-center";
+          toastIcon.innerHTML =
+            '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>';
+          toastIcon.className = "w-5 h-5 text-red-500";
+        } else {
+          toastIconBg.className =
+            "w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center";
+          toastIcon.innerHTML =
+            '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>';
+          toastIcon.className = "w-5 h-5 text-green-500";
+        }
+
+        toast.classList.add("show");
+
+        setTimeout(() => {
+          toast.classList.remove("show");
+        }, 4000);
+      }
+
+      // Custom cursor
+      const cursor = document.getElementById("cursor");
+
+      document.addEventListener("mousemove", (e) => {
+        if (cursor) {
+          cursor.style.left = e.clientX + "px";
+          cursor.style.top = e.clientY + "px";
+        }
+      });
+
+      // Intersection Observer for animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+          }
+        });
+      }, observerOptions);
+
+      // Observe elements for scroll animations
+      document
+        .querySelectorAll(".service-card, .testimonial-card, .blog-card")
+        .forEach((el) => {
+          el.style.opacity = "0";
+          el.style.transform = "translateY(30px)";
+          el.style.transition = "all 0.6s ease";
+          observer.observe(el);
+        });
+
+      // Initial config application
+      applyConfig();
+    </script>
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'9c927a0b06e95456',t:'MTc3MDI5NTIzMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener)
+            document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState &&
+                ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>
